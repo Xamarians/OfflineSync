@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:OfflineSyncDemo"
+             x:Class="OfflineSyncDemo.MainPage"
+             BackgroundColor="White">
+
+    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Padding="10" BackgroundColor="White">
+        <!-- Place new controls here -->
+        <Image Source="sync.png" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" />
+        <BoxView HeightRequest="60" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+        <Button Text="Add User" TextColor="White" BackgroundColor="#0095e7" BorderRadius="20"  Clicked="ButtonAddUserClicked" />
+        <Button Text="View Users" TextColor="White" BackgroundColor="#0095e7" BorderRadius="20" Clicked="ButtonEditUserClicked" />
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:uc="clr-namespace:AzureOfflineSyncDemo.Controls"
+             x:Class="AzureOfflineSyncDemo.Views.UserCreatePage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Padding="10" Grid.Row="0">
+                <Entry Placeholder="FirstName" Text="{Binding FirstName}" />
+                <Entry Placeholder="LastName" Text="{Binding LastName}" />
+                <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email" />
+                <Entry Placeholder="Phone Number" Text="{Binding PhoneNumber }" Keyboard="Telephone" />
+                <Entry Placeholder="Address" Text="{Binding Address}" />
+                <Button Text="Create" Command="{Binding CreateCommand}" HorizontalOptions="Center"/>
+            </StackLayout>
+            <uc:LoaderView Grid.Row="0" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
