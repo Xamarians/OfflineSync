@@ -18,7 +18,7 @@ https://drive.google.com/open?id=19RvT90T6edf1z-zf-afzIVWNm_09sodP
 Server data can be check from here: http://syncpoc.aspcore.net/Home/Users
 
 ## Technology Stack
-Web Api: Asp.Net Core 2.1
-Mobile App: Xamarin.Forms (Android and iOS)
-Database: SQLite and MSSql Server
-Server: Azure Cloud
+Web Api: Asp.Net Core 2.1  
+Mobile App: Xamarin.Forms (Android and iOS)  
+Database: SQLite and MSSql Server  
+Server: Azure Cloud  
