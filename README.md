@@ -4,14 +4,14 @@ Repository contains two Xamarin.Forms sample applications that store data locall
 2. OfflineSyncDemo : Uses own business logic to save data offline and sync data to server when connected to online. 
 3. SyncPocService: .Net Core web api used to store data in sql database.
 
-# Azure Offline Sync
+## Azure Offline Sync
 *Download Android App 
 https://drive.google.com/open?id=1n_kqWbeFc0BQNiauI2SVlgpuBuDMnaGy
 
 Server data can be check from here: http://syncpoc.aspcore.net/Home/Employees
 
 
-# Custom Offline Sync
+## Custom Offline Sync
 *Download Android App
 https://drive.google.com/open?id=19RvT90T6edf1z-zf-afzIVWNm_09sodP
 
