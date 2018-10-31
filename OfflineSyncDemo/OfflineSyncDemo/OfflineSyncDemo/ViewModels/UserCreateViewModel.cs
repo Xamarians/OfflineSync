@@ -133,7 +133,8 @@ namespace OfflineSyncDemo.ViewModels
                     await App.Current.MainPage.DisplayAlert("Error", "User already exist in the database.", "ok");
                     return;
                 }
-                await Repository.SyncInsert(user);
+
+                Repository.SyncInsert(user);
                 await App.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception ex)
@@ -172,7 +173,7 @@ namespace OfflineSyncDemo.ViewModels
             IsBusy = true;
             try
             {
-                await Repository.SyncUpdate(user);
+                Repository.SyncUpdate(user);
                 await App.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception ex)

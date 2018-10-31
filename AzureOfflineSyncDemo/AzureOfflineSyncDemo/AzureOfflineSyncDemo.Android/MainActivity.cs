@@ -1,11 +1,8 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using AzureOfflineSyncDemo.Services;
 
 namespace AzureOfflineSyncDemo.Droid
 {
@@ -22,5 +19,34 @@ namespace AzureOfflineSyncDemo.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            AzureManager.DefaultManager.SyncAsync().ContinueWith((t) => { });
+
+            //Check for service. 
+            var mServiceIntent = new Intent(this, typeof(BackgroundService));
+            StartService(mServiceIntent);
+
+            //if (!IsMyServiceRunning(Java.Lang.Class.FromType(typeof(BackgroundService))))
+            //{
+            //    StartService(mServiceIntent);
+            //}
+        }
+
+
+        //public bool IsMyServiceRunning(Java.Lang.Class serviceClass)
+        //{
+        //    ActivityManager manager = (ActivityManager)GetSystemService(ActivityService);
+        //    foreach (var item in manager.GetRunningServices(int.MaxValue))
+        //    {
+        //        if (serviceClass.Name.Equals(item.Service.ClassName))
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
     }
 }

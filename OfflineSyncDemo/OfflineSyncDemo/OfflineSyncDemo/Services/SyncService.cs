@@ -74,15 +74,25 @@ namespace OfflineSyncDemo.Services
             if (_busy)
                 return;
             _busy = true;
-            List<Task> taskList = new List<Task>();
-            foreach (var item in Repository.AsQueryable<User>()
-                .Where(x => x.SyncStatus != (int)SyncStatus.Ok)
-                .OrderByDescending(x => x.UpdatedOn))
+            try
             {
-                taskList.Add(SyncTable(item));
+                List<Task> taskList = new List<Task>();
+                foreach (var item in Repository.AsQueryable<User>()
+                    .Where(x => x.SyncStatus != (int)SyncStatus.Ok)
+                    .OrderByDescending(x => x.UpdatedOn))
+                {
+                    taskList.Add(SyncTable(item));
+                }
+                await Task.WhenAll(taskList);
             }
-            await Task.WhenAll(taskList);
-            _busy = false;
+            catch
+            {
+
+            }
+            finally
+            {
+                _busy = false;
+            }
         }
 
     }

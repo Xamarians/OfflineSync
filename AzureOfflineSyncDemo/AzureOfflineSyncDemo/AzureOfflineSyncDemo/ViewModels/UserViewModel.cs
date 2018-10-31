@@ -48,7 +48,7 @@ namespace AzureOfflineSyncDemo.ViewModels
             {
                 RemoveItemFromList(employee);
                 await manager.Delete(employee);
-                await manager.SyncAsync();
+                manager.SyncAsync().NoAwait();
             }
             catch (Exception ex)
             {

@@ -128,10 +128,8 @@ namespace AzureOfflineSyncDemo.ViewModels
             IsBusy = true;
             try
             {
-               
-
                 await manager.SaveTaskAsync(user);
-                await manager.SyncAsync();
+                manager.SyncAsync();
 
                 await App.Current.MainPage.Navigation.PopAsync();
             }
@@ -170,7 +168,7 @@ namespace AzureOfflineSyncDemo.ViewModels
             try
             {
                 await manager.SaveTaskAsync(user);
-                await manager.SyncAsync();
+                manager.SyncAsync().NoAwait();
 
                 await App.Current.MainPage.Navigation.PopAsync();
             }

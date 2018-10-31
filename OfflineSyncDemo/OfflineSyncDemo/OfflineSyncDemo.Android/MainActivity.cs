@@ -1,11 +1,9 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Content;
+using OfflineSyncDemo.Services;
+using Android.Runtime;
 
 namespace OfflineSyncDemo.Droid
 {
@@ -16,7 +14,8 @@ namespace OfflineSyncDemo.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-          
+            
+            
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
@@ -25,6 +24,29 @@ namespace OfflineSyncDemo.Droid
         {
             base.OnResume();
             Services.SyncService.Instance.SyncAll();
+
+            
+            //Check for service.
+            var mServiceIntent = new Intent(this, typeof(BackgroundService));
+            if (!IsMyServiceRunning(Java.Lang.Class.FromType(typeof(BackgroundService))))
+            {
+                StartService(mServiceIntent);
+            }
+        }
+
+      
+
+        public bool IsMyServiceRunning(Java.Lang.Class serviceClass)
+        {
+            ActivityManager manager = (ActivityManager)GetSystemService(Context.ActivityService);
+            foreach (var item in manager.GetRunningServices(int.MaxValue))
+            {
+                if (serviceClass.Name.Equals(item.Service.ClassName))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -15,10 +15,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants - Copy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\LoaderView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\SqlLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DI\IDependencyService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NotifyPropertyChangedBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AzureManager.cs" />

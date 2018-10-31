@@ -49,7 +49,7 @@ namespace OfflineSyncDemo.ViewModels
             IsBusy = true;
             try
             {
-                await Repository.SyncDelete(user);
+                Repository.SyncDelete(user);
                 RemoveItemFromList(userId);
             }
             catch (Exception ex)

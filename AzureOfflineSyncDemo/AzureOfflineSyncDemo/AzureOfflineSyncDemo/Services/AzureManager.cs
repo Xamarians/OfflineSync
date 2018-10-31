@@ -25,7 +25,7 @@ namespace AzureOfflineSyncDemo.Services
                 this.client.SyncContext.InitializeAsync(store);
                 this.EmployeeItems = client.GetSyncTable<EmployeeItem>();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -84,11 +84,11 @@ namespace AzureOfflineSyncDemo.Services
         /// </summary>
         public async Task Delete(EmployeeItem employee)
         {
-            await  EmployeeItems.DeleteAsync(employee);
+            await EmployeeItems.DeleteAsync(employee);
         }
 
         /// <summary>
-        /// Create and update user to local database as well as on the Azure server
+        /// Create and update user to local database
         /// </summary>
         public async Task SaveTaskAsync(EmployeeItem item)
         {
