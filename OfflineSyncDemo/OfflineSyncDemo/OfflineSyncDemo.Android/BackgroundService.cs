@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Widget;
 using OfflineSyncDemo.Services;
 using Plugin.Connectivity;
 
@@ -22,7 +23,8 @@ namespace OfflineSyncDemo.Droid
             {
                 if (CrossConnectivity.Current.IsConnected)
                 {
-                    SyncService.Instance.SyncAll();
+                    if (Connectivity.IsConnectedFast(Xamarin.Forms.Forms.Context))
+                        SyncService.Instance.SyncAll();
                 }
             };
             return base.OnStartCommand(intent, flags, startId);

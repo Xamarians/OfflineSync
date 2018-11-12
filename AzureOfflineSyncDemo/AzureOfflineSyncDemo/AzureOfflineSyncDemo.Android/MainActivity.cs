@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using AzureOfflineSyncDemo.DI;
 using AzureOfflineSyncDemo.Services;
 
 namespace AzureOfflineSyncDemo.Droid
@@ -23,7 +24,8 @@ namespace AzureOfflineSyncDemo.Droid
         protected override void OnResume()
         {
             base.OnResume();
-            AzureManager.DefaultManager.SyncAsync().ContinueWith((t) => { });
+            if (Xamarin.Forms.DependencyService.Get<IConnectivity>().IsFastInternet())
+                AzureManager.DefaultManager.SyncAsync().ContinueWith((t) => { });
 
             //Check for service. 
             var mServiceIntent = new Intent(this, typeof(BackgroundService));

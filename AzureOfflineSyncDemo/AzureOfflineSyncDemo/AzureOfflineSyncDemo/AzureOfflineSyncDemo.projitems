@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Constants - Copy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\LoaderView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\SqlLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\IConnectivity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DI\IDependencyService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NotifyPropertyChangedBase.cs" />

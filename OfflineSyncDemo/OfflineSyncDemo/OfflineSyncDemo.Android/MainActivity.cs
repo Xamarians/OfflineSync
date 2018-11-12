@@ -2,8 +2,6 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Content;
-using OfflineSyncDemo.Services;
-using Android.Runtime;
 
 namespace OfflineSyncDemo.Droid
 {

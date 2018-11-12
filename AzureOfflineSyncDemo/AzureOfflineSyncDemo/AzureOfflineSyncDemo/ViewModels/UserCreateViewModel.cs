@@ -1,4 +1,6 @@
-﻿using AzureOfflineSyncDemo.Models;
+﻿using AzureOfflineSyncDemo.DI;
+using AzureOfflineSyncDemo.Droid.DS;
+using AzureOfflineSyncDemo.Models;
 using AzureOfflineSyncDemo.Services;
 using System;
 using System.Windows.Input;
@@ -129,7 +131,8 @@ namespace AzureOfflineSyncDemo.ViewModels
             try
             {
                 await manager.SaveTaskAsync(user);
-                manager.SyncAsync();
+                if (Xamarin.Forms.DependencyService.Get<IConnectivity>().IsFastInternet())
+                    manager.SyncAsync().NoAwait();
 
                 await App.Current.MainPage.Navigation.PopAsync();
             }
@@ -168,7 +171,8 @@ namespace AzureOfflineSyncDemo.ViewModels
             try
             {
                 await manager.SaveTaskAsync(user);
-                manager.SyncAsync().NoAwait();
+                if (Xamarin.Forms.DependencyService.Get<IConnectivity>().IsFastInternet())
+                    manager.SyncAsync().NoAwait();
 
                 await App.Current.MainPage.Navigation.PopAsync();
             }

@@ -1,4 +1,5 @@
 ﻿using OfflineSyncDemo.Data;
+using OfflineSyncDemo.DI;
 using OfflineSyncDemo.Models;
 using OfflineSyncDemo.Services;
 using System;
@@ -49,6 +50,7 @@ namespace OfflineSyncDemo.ViewModels
             IsBusy = true;
             try
             {
+
                 Repository.SyncDelete(user);
                 RemoveItemFromList(userId);
             }

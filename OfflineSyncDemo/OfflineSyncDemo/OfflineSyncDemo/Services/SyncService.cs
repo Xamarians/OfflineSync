@@ -1,15 +1,18 @@
 ﻿using OfflineSyncDemo.Data;
+using OfflineSyncDemo.DI;
 using OfflineSyncDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace OfflineSyncDemo.Services
 {
     public class SyncService
     {
         private bool _busy = false;
+
         private static readonly SyncService _instance = new SyncService();
         public static SyncService Instance => _instance;
         private SyncService()
@@ -39,6 +42,8 @@ namespace OfflineSyncDemo.Services
         public async Task<bool> SyncTable<TEntity>(TEntity item) where TEntity : IEntity, IServerEntity
         {
             if (item.SyncStatus == (int)SyncStatus.Ok)
+                return true;
+            if (!DependencyService.Get<IConnectivity>().IsFastInternet())
                 return true;
             try
             {

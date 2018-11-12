@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using AzureOfflineSyncDemo.Droid.DS;
 using AzureOfflineSyncDemo.Services;
 using Plugin.Connectivity;
 
@@ -22,7 +23,8 @@ namespace AzureOfflineSyncDemo.Droid
             {
                 if (CrossConnectivity.Current.IsConnected)
                 {
-                    SyncDatabase();
+                    if (Connectivity.IsConnectedFast(Xamarin.Forms.Forms.Context))
+                        SyncDatabase();
                 }
             };
             return base.OnStartCommand(intent, flags, startId);

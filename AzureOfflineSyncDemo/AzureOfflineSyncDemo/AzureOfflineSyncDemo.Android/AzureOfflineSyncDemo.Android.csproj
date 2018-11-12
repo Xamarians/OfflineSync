@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundService.cs" />
+    <Compile Include="DS\Connectivity.cs" />
     <Compile Include="DS\DependencyService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

@@ -1,4 +1,6 @@
-﻿using AzureOfflineSyncDemo.Models;
+﻿using AzureOfflineSyncDemo.DI;
+using AzureOfflineSyncDemo.Droid.DS;
+using AzureOfflineSyncDemo.Models;
 using AzureOfflineSyncDemo.Services;
 using System;
 using System.Collections.ObjectModel;
@@ -48,7 +50,10 @@ namespace AzureOfflineSyncDemo.ViewModels
             {
                 RemoveItemFromList(employee);
                 await manager.Delete(employee);
-                manager.SyncAsync().NoAwait();
+                if (Xamarin.Forms.DependencyService.Get<IConnectivity>().IsFastInternet())
+                {
+                    manager.SyncAsync().NoAwait();
+                }
             }
             catch (Exception ex)
             {

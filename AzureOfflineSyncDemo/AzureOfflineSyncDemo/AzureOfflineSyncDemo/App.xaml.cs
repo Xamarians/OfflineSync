@@ -1,4 +1,5 @@
-﻿using AzureOfflineSyncDemo.Services;
+﻿using AzureOfflineSyncDemo.DI;
+using AzureOfflineSyncDemo.Services;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -25,8 +26,8 @@ namespace AzureOfflineSyncDemo
         /// <param name="e"></param>
         private void App_OnStatusChanged(object sender, EventArgs e)
         {
-
-            AzureManager.DefaultManager.SyncAsync().ContinueWith((t)=> { });
+            if (DependencyService.Get<IConnectivity>().IsFastInternet())
+                AzureManager.DefaultManager.SyncAsync().ContinueWith((t)=> { });
         }
         protected override void OnStart()
         {

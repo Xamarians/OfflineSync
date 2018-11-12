@@ -1,4 +1,5 @@
-﻿using AzureOfflineSyncDemo.Models;
+﻿using AzureOfflineSyncDemo.DI;
+using AzureOfflineSyncDemo.Models;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace AzureOfflineSyncDemo.Services
 {
@@ -63,7 +65,7 @@ namespace AzureOfflineSyncDemo.Services
         {
             try
             {
-                if (syncItems)
+                if (syncItems && DependencyService.Get<IConnectivity>().IsFastInternet())
                 {
                     await this.SyncAsync();
                 }
